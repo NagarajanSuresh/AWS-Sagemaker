@@ -24,6 +24,7 @@ def ping():
 def predict():
     content_type = request.headers.get("Content-Type")
     data = inference.input_fn(request.data, content_type)
+    print(data)
     preds = inference.predict_fn(data, model)
     return jsonify(inference.output_fn(preds, "application/json"))
    
